@@ -1,0 +1,76 @@
+Vagrant :-
+
+Hypervisor Type 2 :- Oracle Virtual Box
+Vagrant : Vagrant software version 2.2.19
+Sources : D:\Study Material\Sources
+
+Vagrant Cloud  : Downloads the images from Vagrant cloud when we initialize the server
+https://app.vagrantup.com/boxes/search
+
+Vagrant is a command line tool 
+
+
+Vagrant for VMs
+- No OS Installations
+- VM Setup through images (vagrant boxes)
+- Images/Boxes available in vagrant cloud
+- Manage VMs with a file (Vagrantfile)
+- VM changes automatic through Vagrantfile
+- Vagrant commands to manage VMs
+- Provisioning VM/Executing commands and script
+
+
+Vagrant Bridge Network :-
+When we create a VM, IP is assigned through VirtualBox NAT network. By default, it will be in a private network and we cannot reach from outside.0
+If we want to connect to the VM from our laptop or physical network, we need to use bridge network.
+
+Through bridge network, VM created inside the VirtualBox will get IP address from the same IP Subnet of Laptop.
+
+Vagrant Commands :-
+
+## Initializes by creating a Vagrantfile and Downloads the image from Vagrant Cloud if image is not available in local computer/directory
+	vagrant init ubuntu/xenial64  ### downloads image of ubuntu/xenial64
+	vagrant init centos/7  ## downloads image of CentOS7
+
+## To bring the VM online
+	vagrant up
+
+## SSH to the VM
+	vagrant ssh
+
+## to shutdown the VM
+	vagrant halt
+
+## to destroy the VM
+	vagrant destroy
+
+## to reboot the vm
+	vagrant reload
+
+## to suspend the vm
+	vagrant suspend
+
+## to resume the suspended vm
+	vagrant resume
+
+## to reload the vm
+	vagrant reload
+
+Config File :-
+
+  config.vm.box = "ubuntu/xenial64"  ### Operating System box
+  config.vm.provider = "virtualbox"  ### virtual box
+  config.vm.network :private_network, ip: "192.168.56.153"   ### to update static IP
+  config.vm.synced_folder = how you access files from your computer
+  config.vm.provision = what we want to setup
+  
+
+
+
+
+
+
+
+
+
+

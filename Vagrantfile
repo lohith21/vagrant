@@ -9,13 +9,13 @@ Vagrant.configure(2) do |config|
 
   # Master Server
   config.vm.define "k8s-master" do |master|
-    master.vm.box = "ubuntu/xenial64"
+    master.vm.box = "bento/ubuntu-20.04"
     master.vm.hostname = "master.example.com"
     master.vm.network "private_network", ip: "172.31.0.100"
     master.vm.provider "virtualbox" do |v|
       v.name = "master"
-      v.memory = 4048
-      v.cpus = 2
+      v.memory = 2048
+      v.cpus = 1
       # Prevent VirtualBox from interfering with host audio stack
       v.customize ["modifyvm", :id, "--audio", "none"]
     end
@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
   # Worker Nodes
   (1..NodeCount).each do |i|
     config.vm.define "k8s-worker#{i}" do |workernode|
-      workernode.vm.box = "ubuntu/xenial64"
+      workernode.vm.box = "bento/ubuntu-20.04"
       workernode.vm.hostname = "k8s-worker#{i}.example.com"
       workernode.vm.network "private_network", ip: "172.31.0.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
